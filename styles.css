@@ -1,0 +1,377 @@
+/* Algemene body stijlen */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header .logo h1 {
+    font-size: 1.8em;
+    font-weight: 600;
+    margin: 0;
+}
+
+h3 {
+    font-size: 1.4em;
+    font-weight: 600;
+    margin-top: 20px; /* Voeg hier de gewenste ruimte toe */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+/* Main content */
+main {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.search-container {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    height: 50px;
+    resize: vertical;
+}
+
+.checkbox-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.checkbox-container label {
+    font-size: 14px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+/* Footer */
+footer {
+    background-color: #232323;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+}
+
+footer p {
+    margin: 0;
+    font-size: 1em;
+}
+
+footer a {
+    color: #ffdf00;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: #ffffff;
+}
+
+/* Adsense section */
+.adsense {
+    width: 100%;
+    min-height: 100px;
+    background: #ddd;
+    margin: 20px 0;
+    text-align: center;
+    line-height: 100px;
+}
+
+/* Zorg ervoor dat beide containers goed naast elkaar staan */
+.question-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap; /* Laat ze netjes op mobiel schalen */
+    margin-top: 20px;
+}
+
+.radio-container {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 15px;
+}
+
+.radio-container label {
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.input-container {
+    margin-top: 10px;
+}
+
+/* Seizoen vraag stijl */
+.season-container, .episode-container {
+    max-width: 45%; /* Zorgt ervoor dat beide containers samen goed passen */
+    display: flex;  /* Flexbox om inhoud te centreren */
+    flex-direction: column; /* Plaats elementen onder elkaar */
+    align-items: flex-start;  /* Verticaal centreren */
+    justify-content: center; /* Horizontaal centreren */
+    margin: 0 auto; /* Optioneel, centreert de container */
+    text-align: center; /*Centreer alle tekst binnen de container */
+}
+
+.season-container label, .episode-container label {
+    font-weight: bold;
+    font-size: 1em;
+    margin-bottom: 10px; /* Zorgt voor wat ruimte tussen het label en de schuifregelaar */
+}
+
+/* Schuifregelaar stijl */
+#season-slider, #episode-slider {
+    width: 70%;  /* Stel de breedte in op 70% van de container */
+    margin-top: 10px;
+}
+
+/* Weergegeven getal stijl */
+#season-output, #episode-output {
+    display: block;
+    margin-top: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* Algemeen boxontwerp voor de verschillende secties */
+.box-container {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc; /* Rand rondom */
+    border-radius: 10px; /* Afgeronde hoeken */
+    background-color: #f9f9f9; /* Achtergrondkleur */
+}
+
+/* Specifieke stijlen voor de vraagcontainers (seizoen en aflevering) */
+.question-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Seizoen en aflevering containers */
+.season-container, .episode-container {
+    width: 48%; /* Zorgt ervoor dat ze naast elkaar staan, met een kleine ruimte */
+}
+
+/* Extra stijl voor de labels en input velden */
+label {
+    font-weight: bold;
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+.trefwoord {
+    width: 30%;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 1.2em;
+    padding-left: 10px;
+}
+
+input[type="range"] {
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+output {
+    display: block;
+    margin-top: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.results {
+    margin-top: 20px;
+}
+
+.results li div {
+    padding: 10px;
+    background: #f1f1f1;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    width: 100%; /* Zorgt ervoor dat elk item de volledige breedte van zijn gridcontainer inneemt */
+    display: block;
+    align-items: center;
+    width: 100%;
+    padding: 5px;
+    text-decoration: none;
+    color: black;
+}
+
+/* Algemene stijlen voor de resultatenlijst */
+.results ul {
+    list-style: none;
+    flex-wrap: wrap; /* Laat de items naast elkaar staan, en naar beneden schuiven als er geen ruimte is */
+    padding: 0;
+    margin: 0;
+}
+
+.result-item {
+    display: grid;
+    grid-template-columns: 1fr auto; /* Titel links, pijl rechts */
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    background-color: white;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hover effect voor de link */
+.results li div:hover {
+    background: rgb(180, 179, 179);
+}
+
+/* Titel voor de resultaten (over de volledige breedte) */
+.results h3 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+.results h4 {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+/* Voeg extra stijlen toe voor de play-button-overige */
+.results-container {
+    display: block;
+    align-items: left;
+    width: 100%;
+    font-size: 1em;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+/* Voeg extra stijlen toe voor de play-button-overige */
+.highest-container {
+    display: block;
+    width: 100%;
+    font-size: 1em;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.play-button {
+    text-decoration: none;
+    color: black;
+    font-size: 1.2em;
+}
+
+.play-button-overige {
+    text-decoration: none;
+    color: black;
+}
+
+/* Maak het hoogste resultaat over de volledige breedte */
+#top-result {
+    padding: 0 20px 0 0;
+    text-decoration: none;
+    color: black;
+    display: block;
+    width: 100%;
+}
+
+/* Maak het hoogste resultaat over de volledige breedte */
+#results-list {
+    padding: 0 20px 0 0;
+}
+
+.results li a span {
+    margin-left: 10px; /* Voeg ruimte toe tussen de tekst */
+}
+
+.match-sentences {
+    display: none;       /* Zorgt ervoor dat de lijst standaard verborgen is */
+    width: 90%;          /* De breedte van de lijst */
+    margin-left: 10em;
+    padding-left: 20px;  /* Ruimte aan de linkerkant voor opsommingstekens */
+    list-style-type: none; /* Verwijdert standaard opsommingstekens */
+}
+
+.match-sentences li {
+    font-size: 0.9em;    /* Maat van de tekst */
+    margin-bottom: 8px;  /* Ruimte tussen de items */
+    margin-left: 2em;
+    color: #333;         /* Kleur van de tekst */
+    position: relative;  /* Voor het positioneren van de opsommingstekens */
+}
+
+.match-sentences li::before {
+    content: "•";        /* Het opsommingsteken */
+    position: absolute;
+    left: -20px;         /* Verplaats het opsommingsteken naar links */
+    top: 0;
+    font-size: 1em;    /* Grotere opsommingstekens */
+    color: #272828;      /* Kleur van het opsommingsteken */
+}
+
