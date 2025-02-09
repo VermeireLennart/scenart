@@ -5,19 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scenart</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/jpg" href="images\favicon.jpg">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9327921855896721"
      crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 
     <header>
-        <h1>SCENART</h1>
-        <nav>
-            <ul>
-                <li><a href="fcdk.html">FC De Kampioenen</a></li>
-                <!-- Hier kun je makkelijk andere series toevoegen -->
-            </ul>
-        </nav>
+        <h1 class="site-title"><a href="index.html">SCENART</a></h1>
+        <div class="dropdown">
+            <button class="dropbtn">▼</button>
+            <div class="dropdown-content">
+                <a href="fcdk.html">FC De Kampioenen</a>
+            </div>
+        </div>
     </header>
 
     <main>
@@ -26,9 +28,15 @@
         </section>
 
         <section class="content">
-            <h2>Welkom bij de Scène Zoeker</h2>
-            <p>Kies een serie en zoek naar jouw favoriete scènes.</p>
+            <h2>Zoek jouw favoriete scènes</h2>
+            <div>Kies een serie:</div>
         </section>
+        <main>
+            <div class="button-list">
+                <button class="main-button" onclick="location.href='fcdk.html'">FC De Kampioenen</button>
+                <button class="inactive-button">More Coming Soon...</button>
+            </div>
+        </main>
 
         <section class="adsense ad-bottom">
             <!-- Google Ads komt hier -->

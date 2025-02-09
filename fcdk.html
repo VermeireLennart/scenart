@@ -4,28 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FC De Kampioenen</title>
+    <link rel="icon" type="image/jpg" href="images\21982992.png">
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/compromise@13.0.0/builds/compromise.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.6.2/fuse.min.js" defer></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9327921855896721"
      crossorigin="anonymous"></script>
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+
 
     <script>
+        window.onload = function() {
+            window.selectedSearchType = "";
+        };
         // Functie om de juiste input (trefwoord of meerdere trefwoorden) weer te geven
-        function toggleTrefwoordInput() {
+        function toggleTrefwoordInput(type) {
+            window.selectedSearchType = type;
+        
             document.getElementById("trefwoord-div").style.display = "none";
             document.getElementById("meerdere-trefwoorden-div").style.display = "none";
             document.getElementById("beschrijving-div").style.display = "none";
-            
-            const selectedValue = document.querySelector('input[name="trefwoord-keuze"]:checked')?.value;
-            if (selectedValue === "single") {
+        
+            if (type === "single") {
                 document.getElementById("trefwoord-div").style.display = "block";
-            } else if (selectedValue === "multiple") {
+            } else if (type === "multiple") {
                 document.getElementById("meerdere-trefwoorden-div").style.display = "block";
-            } else if (selectedValue === "description") {
+            } else if (type === "description") {
                 document.getElementById("beschrijving-div").style.display = "block";
             }
         }
+        
 
         // Functie om extra informatie weer te geven (personages, seizoen/aflevering)
         function toggleExtraInfo() {
@@ -42,27 +50,52 @@
         }
 
         function submitSearch() {
-            const selectedValue = document.querySelector('input[name="trefwoord-keuze"]:checked')?.value;
-            if (selectedValue === "single") {
-                searchWord();
-            } else if (selectedValue === "multiple") {
-                searchMultipleWords();
-            } else if (selectedValue === "description") {
+            // Verberg de resultaten sectie voordat we beginnen
+            document.querySelector('.results').style.display = 'none';
+        
+            if (window.selectedSearchType === "single") {
+                if (typeof searchWord === "function") {
+                    searchWord();
+                } else {
+                    console.error("searchWord() is not defined!");
+                }
+            } else if (window.selectedSearchType === "multiple") {
+                if (typeof searchMultipleWords === "function") {
+                    searchMultipleWords();
+                } else {
+                    console.error("searchMultipleWords() is not defined!");
+                }
+            } else if (window.selectedSearchType === "description") {
                 alert("Coming soon...");
+            } else {
+                console.error("No valid search type selected");
+            }
+        
+            // Nadat de zoekresultaten zijn opgehaald, maak de sectie zichtbaar
+            // (voorbeeld: als er zoekresultaten zijn)
+            let resultsAvailable = true; // Dit is een voorbeeld; werk met je echte resultaatdata
+        
+            if (resultsAvailable) {
+                document.querySelector('.results').style.display = 'block';
             }
         }
+        
+        
     </script>
 </head>
 <body>
 
-    <header>
-        <h1>FCDK</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#">FC De Kampioenen</a></li>
-            </ul>
-        </nav>
+    <header class="fcdk-titelbalk">
+        <h1><a href="index.html">SCENART</a></h1>
+        <img src="images/21982992.png" alt="Afbeelding" class="header-afbeelding">
+        <div>
+            <div class="dropdown">
+                <button class="dropbtn">▼</button>
+                <div class="dropdown-content">
+                    <a href="#">FCDK Gifs</a>
+                </div>
+            </div>
+        </div>
     </header>
 
     <main>
@@ -71,24 +104,25 @@
         </section>
 
         <section class="search-container">
-            <h2>Zoek uw aflevering</h2>
-
+            <h2>Zoek een aflevering of scène uit <span class="break-line"><br></span>FC De Kampioenen</h2>
+            <div>Opties:</div>
             <!-- Keuze voor 1 of meerdere trefwoorden -->
             <div class="radio-container">
-                <label><input type="radio" name="trefwoord-keuze" value="single" onchange="toggleTrefwoordInput()"> Eén trefwoord</label>
-                <label><input type="radio" name="trefwoord-keuze" value="multiple" onchange="toggleTrefwoordInput()"> Meerdere trefwoorden</label>
-                <label><input type="radio" name="trefwoord-keuze" value="description" onchange="toggleTrefwoordInput()"> Beschrijving (AI)</label>
+                <label><button onclick="toggleTrefwoordInput('single')">Eén trefwoord</button></label>
+                <label><button onclick="toggleTrefwoordInput('multiple')">Meerdere trefwoorden</button></label>
+                <label><button onclick="toggleTrefwoordInput('description')">Beschrijving (AI)</button></label>
             </div>
 
             <!-- Trefwoord -->
             <div id="trefwoord-div" class="input-container" style="display: none;">
-                <label for="trefwoord">Geef een woord dat zeker wordt vermeld in de aflevering:</label>
+                <label for="trefwoord">Geef een trefwoord:</label>
                 <input type="text" id="trefwoord-input" placeholder="Trefwoord: bv. truitjes">
             </div>
 
             <!-- Meerdere trefwoorden -->
             <div id="meerdere-trefwoorden-div" class="input-container" style="display: none;">
-                <label for="trefwoorden">Meerdere trefwoorden geven:</label>
+                <label for="trefwoorden">Geef 1 of meerdere trefwoorden:
+                </label>
                 <textarea id="meerdere-trefwoorden-input" placeholder="Bijv. bieke amerika psycholoog ..."></textarea>
             </div>
 
@@ -140,7 +174,7 @@
         </section>
 
         <section class="results">
-            <h3>Resultaat</h3>
+            <h3>Beste resultaat</h3>
             <ul id="top-result">
                 <!-- Hier komt de meest waarschijnlijke -->
             </ul>

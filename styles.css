@@ -4,6 +4,9 @@ body {
     background-color: #f8f9fa;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
 
 /* Header */
@@ -15,13 +18,54 @@ header {
     background: linear-gradient(135deg, #007bff, #0056b3);
     color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-image: url('images/23-238926_wolken-full-hd.jpg');
+    background-position-x: center;
+    background-size: cover;
 }
 
 header .logo h1 {
     font-size: 1.8em;
     font-weight: 600;
     margin: 0;
+    text-decoration: none;
 }
+
+header h1 a {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin: 0;
+    text-decoration: none;
+    color: white;
+}
+
+.fcdk-titelbalk {
+    display: flex;
+    justify-content: center; /* Zorgt ervoor dat alles in het midden van de header staat */
+    align-items: center; /* Verticaal centreren van de items */
+    padding: 20px 40px;
+    color: black;
+    background-image: url('images/23-238926_wolken-full-hd.jpg');
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.fcdk-titelbalk h1 {
+    margin-right: 0; /* Zorgt ervoor dat de titel aan de linkerkant blijft */
+}
+
+.fcdk-titelbalk .dropdown {
+    margin-left: auto; /* Zorgt ervoor dat de dropdown naar de rechterkant verschuift */
+}
+
+.header-afbeelding {
+    margin: 0 20px; /* Ruimte aan de zijkanten van de afbeelding */
+    max-height: 150px; /* Pas de hoogte van de afbeelding aan naar wens */
+    object-fit: contain; /* Zorgt ervoor dat de afbeelding niet vervormt */
+    flex-grow: 1; /* Zorgt ervoor dat de afbeelding de beschikbare ruimte opvult */
+    text-align: center;
+}
+
 
 h3 {
     font-size: 1.4em;
@@ -48,14 +92,14 @@ nav ul li a {
     transition: color 0.3s;
 }
 
-/* Main content */
+
 main {
-    max-width: 1000px;
-    margin: 20px auto;
+    flex-grow: 1;
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+    flex-direction: column;
     padding: 20px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .search-container {
@@ -100,17 +144,47 @@ button {
     border-radius: 5px;
 }
 
+.radio-container button {
+    color: black;
+    font-weight: 600;
+    gap: 10px; /* Dit voegt ruimte toe tussen de knoppen */
+}
+
+.radio-container button::content {
+    font-weight: 400;
+}
+
+
+.radio-container button:last-child {
+    margin-right: 0; 
+}
+
+.radio-container button:focus {
+    background-color: rgba(255, 255, 0, 0.751);
+    color: black;
+}
+
 button:hover {
     background-color: #218838;
 }
 
 /* Footer */
-footer {
+/* footer {
     background-color: #232323;
     color: white;
     padding: 20px 0;
     text-align: center;
     box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+} */
+
+footer {
+    background-color: #232323;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }
 
 footer p {
@@ -307,12 +381,11 @@ output {
     display: block;
     align-items: left;
     width: 100%;
-    font-size: 1em;
+    font-size: 0.5em;
     padding: 5px;
     border-radius: 5px;
 }
 
-/* Voeg extra stijlen toe voor de play-button-overige */
 .highest-container {
     display: block;
     width: 100%;
@@ -375,3 +448,160 @@ output {
     color: #272828;      /* Kleur van het opsommingsteken */
 }
 
+.button-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-button {
+    background-color: grey;
+    color: white;
+    border-radius: 20px;
+    padding: 10px;
+    width: 200px;
+    font-size: 1.2em;
+    margin: 5px;
+    cursor: not-allowed;
+}
+
+.main-button:hover {
+    background-color: rgb(92, 196, 92);
+    color: yellow;
+    border-radius: 20px;
+    padding: 10px;
+    width: 200px;
+    font-size: 1.2em;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.inactive-button {
+    background-color: grey;
+    color: white;
+    border-radius: 20px;
+    padding: 10px;
+    width: 200px;
+    font-size: 1.2em;
+    margin: 5px;
+    cursor: not-allowed;
+}
+.dropbtn {
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown content - deze wordt zichtbaar bij hover */
+.dropdown-content {
+    display: none;
+    position: absolute; /* Zorgt ervoor dat het menu goed gepositioneerd is */
+    right: 0; /* Start het menu links van de knop */
+    top: 100%; /* Zorgt ervoor dat het menu onder de knop verschijnt */
+    background-color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    min-width: 200px;
+    z-index: 1;
+    border-radius: 5px; /* Voeg afgeronde hoeken toe */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Dropdown items (links) */
+.dropdown-content a {
+    display: block;
+    padding: 10px;
+    color: black;
+    text-decoration: none; /* Verwijder onderlijning */
+    border-bottom: 1px solid #ddd; /* Optioneel: voegt een subtiele lijn toe tussen de items */
+    font-size: 1em;
+}
+
+/* Hover effect voor dropdown items */
+.dropdown-content a:hover {
+    background-color: #f1f1f1; /* Verandert de achtergrondkleur bij hover */
+    color: black; /* Verandert de tekstkleur bij hover */
+    border-radius: 5px; /* Voeg afgeronde hoeken toe */
+}
+
+/* Verwijder de onderste rand van het laatste item */
+.dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+/* Standaard: de <br> is niet zichtbaar */
+.break-line {
+    display: none; /* Voorkomt dat de tekst automatisch wordt afgebroken */
+}
+
+@media only screen and (max-width: 700px) {
+
+    .header-afbeelding {
+        margin: 0 10px; /* Ruimte aan de zijkanten van de afbeelding */
+        max-height: 70px; /* Pas de hoogte van de afbeelding aan naar wens */
+        object-fit: contain; /* Zorgt ervoor dat de afbeelding niet vervormt */
+        flex-grow: 1; /* Zorgt ervoor dat de afbeelding de beschikbare ruimte opvult */
+        text-align: center;
+    }
+
+    header h1 a {
+        font-size: 1em;
+        font-weight: 600;
+        margin: 0;
+        text-decoration: none;
+        color: white;
+    }
+
+    .search-container {
+        width: 100%;
+    }
+
+    main {
+        font-size: 0.9em;
+    }
+
+    button {
+        font-size: 0.7em;
+    }
+
+    .question-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .season-container, .episode-container {
+        width: 100%; /* Zorg ervoor dat deze containers de volledige breedte van het scherm innemen */
+    }
+
+    textarea {
+        width: 100%;
+        font-size: 0.9em;
+        padding: 10px;
+        margin-top: 5px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        height: 50px;
+        resize: vertical;
+    }
+
+    .dropdown-content {
+        min-width: 100%; /* Zorg ervoor dat het dropdown-menu de volledige breedte heeft */
+    }
+
+    .results {
+        display: none;
+        width: 100%;
+    }
+
+    .break-line {
+        display: inline; /* Staat de tekst toe om automatisch af te breken */
+    }
+
+    /* Eventuele andere aanpassingen voor kleinere schermen */
+}
