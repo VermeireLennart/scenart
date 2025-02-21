@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FC De Kampioenen</title>
+    <link rel="icon" type="image/jpg" href="images\scenart_logo_transparant.png">
+    <link rel="stylesheet" href="styles.css">
+     <script defer src="navigeerserie.js"></script>
+</head>
+<body onload="initializePage()">
+    <main>
+
+        <section class="search-container">
+            <h2>Zoek een aflevering of scène uit <span class="break-line"><br></span><span id="serie-titel"></span></h2>
+            <div>Opties:</div>
+            <!-- Keuze voor 1 of meerdere trefwoorden -->
+            <div class="radio-container">
+                <label><button onclick="toggleTrefwoordInput('single')">Eén trefwoord</button></label>
+                <label><button onclick="toggleTrefwoordInput('multiple')">Meerdere trefwoorden</button></label>
+                <label><button onclick="toggleTrefwoordInput('description')">Beschrijving (AI)</button></label>
+            </div>
+
+            <!-- Trefwoord -->
+            <div id="trefwoord-div" class="input-container" style="display: none;">
+                <label for="trefwoord">Geef een trefwoord:</label>
+                <input type="text" id="trefwoord-input" placeholder="Trefwoord" style="width: 300px; font-size: 16px;">
+            </div>
+
+            <!-- Meerdere trefwoorden -->
+            <div id="meerdere-trefwoorden-div" class="input-container" style="display: none;">
+                <label for="trefwoorden">Geef 1 of meerdere trefwoorden:
+                </label>
+                <textarea id="meerdere-trefwoorden-input" placeholder="..."></textarea>
+            </div>
+
+            <div id="beschrijving-div" class="input-container" style="display: none;">
+                <p>Coming soon...</p>
+            </div>
+
+            <!-- <h4>Extra informatie toevoegen (optioneel):
+                <span id="arrow" style="cursor: pointer; font-size: 18px;" onclick="toggleExtraInfo()">▼</span>
+            </h4> -->
+
+            <!-- Alles in één kader -->
+            <div id="extra-info" class="box-container" style="display: none;">
+                <!-- Personages -->
+                <label>Welke personages komen er zeker in voor:</label>
+                <div class="checkbox-container">
+                    <label><input type="checkbox" value="Boma">Boma</label>
+                    <label><input type="checkbox" value="Pico">Pico</label>
+                    <label><input type="checkbox" value="Doortje">Doortje</label>
+                    <label><input type="checkbox" value="Carmen">Carmen</label>
+                    <label><input type="checkbox" value="Markske">Markske</label>
+                    <label><input type="checkbox" value="Xavier">Xavier</label>
+                    <label><input type="checkbox" value="Bieke">Bieke</label>
+                    <label><input type="checkbox" value="Bieke">...</label>
+                </div>
+
+                <!-- Seizoen en aflevering vraag samen in één kader -->
+                <div class="question-container">
+                    <div class="season-container">
+                        <label for="season-slider">Welk seizoen (ongeveer):</label>
+                        <input type="range" id="season-slider" name="season" min="1" max="21" value="1" step="1">
+                        <output id="season-output">1</output>
+                    </div>
+
+                    <div class="episode-container">
+                        <label for="episode-slider">Welke aflevering (ongeveer):</label>
+                        <input type="range" id="episode-slider" name="episode" min="1" max="13" value="1" step="1">
+                        <output id="episode-output">1</output>
+                    </div>
+                </div>
+            </div>
+
+            <button id="search-button" onclick="submitSearch()">Zoeken</button>
+        </section>
+
+        <section class="adsense ad-top">
+            <!-- Google Ads komt hier -->
+        </section>
+
+        <section class="results">
+            <h3>Beste resultaat</h3>
+            <ul id="top-result">
+                <!-- Hier komt de meest waarschijnlijke -->
+            </ul>
+            <h4>Overige mogelijkheden</h4>
+            <ul id="results-list">
+                <!-- Hier komen de overige zoekresultaten -->
+            </ul>
+        </section>
+    </main>
+</body>
+</html>

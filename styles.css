@@ -6,8 +6,49 @@ body {
     padding: 0;
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh; /* Zorgt ervoor dat de achtergrond zich uitstrekt over de volledige hoogte van de pagina */
+    /* Achtergrondafbeelding instellingen */
+    background-image: url('images/23-238926_wolken-full-hd.jpg');
+    background-size: cover; /* Zorgt ervoor dat de afbeelding altijd het volledige scherm vult */
+    background-position: center; /* Centreert de afbeelding */
+    background-repeat: no-repeat; /* Voorkomt herhaling */
+    background-attachment: fixed; /* Zorgt ervoor dat de achtergrond vast blijft staan bij scrollen */
+    /* Semi-transparantie voor alleen de achtergrondafbeelding */
+    position: relative;
+    opacity: 0.9;
 }
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.5); /* Pas de kleur en transparantie aan */
+    z-index: -1; /* Zorgt ervoor dat de laag achter de content blijft */
+}
+
+#trefwoord-input {
+    width: 300px;
+    font-size: 16px;
+    padding: 10px; /* Optioneel voor meer ruimte binnen de input */
+}
+
+.home-button {
+    text-decoration: none;
+    font-size: 20px;
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.home-button:hover {
+    background-color: #e2e6ea;
+}
+
 
 /* Header */
 header {
@@ -15,10 +56,9 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 20px 40px;
-    background: linear-gradient(135deg, #007bff, #0056b3);
+    background: linear-gradient(135deg, white, white);
     color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background-image: url('images/23-238926_wolken-full-hd.jpg');
     background-position-x: center;
     background-size: cover;
 }
@@ -64,6 +104,10 @@ header h1 a {
     object-fit: contain; /* Zorgt ervoor dat de afbeelding niet vervormt */
     flex-grow: 1; /* Zorgt ervoor dat de afbeelding de beschikbare ruimte opvult */
     text-align: center;
+}
+
+.serie-logo {
+    display: none;
 }
 
 
@@ -538,6 +582,67 @@ output {
 /* Standaard: de <br> is niet zichtbaar */
 .break-line {
     display: none; /* Voorkomt dat de tekst automatisch wordt afgebroken */
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    
+}
+.back-button {
+    display: flex;
+    align-items: center;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-decoration: none;
+    width: auto;
+}
+.back-button:hover {
+    background-color: #0056b3;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-right: 30px;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    min-width: 200px;
+    border-radius: 5px;
+}
+.dropdown-content a {
+    color: black;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+}
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.menu-button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.menu-button:hover {
+    background-color: #218838;
 }
 
 @media only screen and (max-width: 700px) {

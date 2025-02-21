@@ -5,43 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scenart</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/jpg" href="images\scenart_logo_transparant.png">
+    <link rel="icon" type="image/jpg" href="images/scenart_logo_transparant.png">
+    <script src="https://cdn.jsdelivr.net/npm/compromise@13.0.0/builds/compromise.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.6.2/fuse.min.js" defer></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9327921855896721"
      crossorigin="anonymous"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script defer src="navigeerserie.js"></script>
+
 </head>
 <body>
 
-    <header>
-        <h1>
-            <a href="index.html">
-                <img src="images/scenart_logo_met_naam_transparant.png" alt="Afbeelding" class="header-afbeelding">
-            </a>
-        </h1>        
-        <!-- <div class="dropdown">
-            <button class="dropbtn">▼</button>
-            <div class="dropdown-content">
-                <a href="fcdk.html">FC De Kampioenen</a>
-            </div>
-        </div> -->
+    <header>   
+        <a href="index.html">
+            <img src="images/scenart_logo_met_naam_transparant.png" alt="Afbeelding" class="header-afbeelding">
+        </a>
     </header>
 
     <main>
+        <div class="menu">
+            <a href="index.html" class="back-button">&#8592; Home</a>
+            <img id="serie-logo" alt="Serie logo" class="header-afbeelding" src="images/scenart_logo_transparant.png">
+            <div class="dropdown">
+                <button class="menu-button">Serie &#9662;</button>
+                <div class="dropdown-content">
+                    <a href="javascript:void(0);" onclick="loadSeries('fcdk')">FC De Kampioenen</a>
+                    <a href="javascript:void(0);" onclick="loadSeries('theoffice')">The Office</a>
+                </div>
+            </div>
+        </div>  
+        
+
         <section class="adsense ad-top">
             <!-- Google Ads komt hier -->
         </section>
 
-        <section class="content">
+        <section class="content" id="start-screen">
             <h2>Zoek jouw favoriete scènes</h2>
             <div>Kies een serie:</div>
-        </section>
-        <main>
             <div class="button-list">
-                <button class="main-button" onclick="location.href='fcdk.html'">FC De Kampioenen</button>
-                <button class="main-button" onclick="location.href='theoffice.html'">The Office</button>
+                <button class="main-button" onclick="loadSeries('fcdk')">FC De Kampioenen</button>
+                <button class="main-button" onclick="loadSeries('theoffice')">The Office</button>
                 <button class="inactive-button">More Coming Soon...</button>
             </div>
-        </main>
+        </section>
+
+        <section class="content" id="dynamic-content" style="display: none;">
+            <!-- Hier wordt de serie-inhoud ingeladen -->
+        </section>
 
         <section class="adsense ad-bottom">
             <!-- Google Ads komt hier -->
@@ -49,7 +60,9 @@
     </main>
 
     <footer>
-        <p>by Lennart Vermeire  &copy;   2025</p>
+        <p>by Lennart Vermeire  &copy; 2025</p>
     </footer>
+    <script src="searchword.js" defer></script>
+    <script src="searchmultiplewords.js" defer></script>
 </body>
 </html>

@@ -1,10 +1,10 @@
-function searchMultipleWords() {
+function searchMultipleWords(serie) {
     const inputElement = document.getElementById("meerdere-trefwoorden-input");
-    
     if (!inputElement) {
         console.error("⚠️ Element met id 'meerdere-trefwoorden-input' niet gevonden!");
-        return; // Stop de functie om fouten te voorkomen
+        return;
     }
+
     const input = inputElement.value ? inputElement.value.trim() : ""; // Voorkomt fouten
     console.log("Ingevoerde waarde:", input);
     
@@ -13,7 +13,9 @@ function searchMultipleWords() {
         return;
     }
 
-    fetch("data.json")
+    const jsonFilePath = `data_${serie}.json`; // Bijvoorbeeld: 'data_fcdk.json' of 'data_theoffice.json'
+    
+    fetch(jsonFilePath)
         .then(response => response.json())
         .then(data => {
             // Stopwoorden om uit te sluiten
@@ -35,6 +37,7 @@ function searchMultipleWords() {
             const fuseOptions = {
                 includeScore: true,
                 keys: ["ondertiteling.text"],
+                // keys: ["audiotranscriptie.text"],
                 threshold: 0.4,
                 findAllMatches: true
             };
@@ -101,13 +104,6 @@ function searchMultipleWords() {
                 let normalizedScore = score*20
 
                 return { normalizedScore, matchedWordsCount, matchedWords };
-            }
-
-            function timeToSeconds(timeStr) {
-                const [hour, minute, second] = timeStr.split(':');
-                const [sec, milli] = second.split(',');
-            
-                return (parseInt(hour) * 3600) + (parseInt(minute) * 60) + parseInt(sec) + parseInt(milli) / 1000;
             }
 
             function formatMinute(seconds) {

@@ -1,32 +1,17 @@
-function searchWord() {
+function searchWord(serie) {
     const input = document.getElementById("trefwoord-input").value.trim();
     if (!input) {
         console.warn("⚠️ Geen zoekwoord ingevoerd.");
         return;
     }
-
-    fetch("data.json")
+    
+    const jsonFilePath = `data_${serie}.json`; // Bijvoorbeeld: 'data_fcdk.json' of 'data_theoffice.json'
+    
+    fetch(jsonFilePath)
         .then(response => response.json())
         .then(data => {
             const stopwords = [
-                "is", "ben", "de", "het", "een", "en", "van", "op", "in", "bij", "er", "te", "voor", "met", "zonder", 
-                "als", "om", "door", "aan", "uit", "zijn", "ik", "jij", "hij", "zij", "wij", "hun", "mijn", 
-                "jou", "zijn", "haar", "onze", "uw", "dit", "dat", "die", "al", "alles", "iedere", "iedereen", 
-                "me", "mij", "je", "jouw", "hoe", "waar", "wat", "wie", "welk", "waarom", "zodat", "dan", 
-                "maar", "toch", "even", "nog", "zelf", "tussen", "over", "onder", "boven", "naar", "uit", 
-                "als", "toen", "nu", "later", "hier", "daar", "ergens", "ook", "te", "gewoon", "alleen", 
-                "meestal", "andere", "me", "je", "zij", "heeft", "heb", "worden", "kan", "zou", "moet", 
-                "wil", "allemaal", "ieder", "erop", "ernaar", "terwijl", "waarop", "waaruit", "waarvan", 
-                "zolang", "opdat", "zelfs", "inderdaad", "bovendien", "natuurlijk", "onder", "tijdens", 
-                "doordat", "daarom", "dan", "zo", "alsnog", "vandaag", "zoveel", "meer", "alles", 
-                "ieder", "degene", "zonder", "vele", "dit", "dat", "behalve", "wat", "zonder", "tenzij", 
-                "door", "bij", "volgens", "naast", "sinds", "nu", "later", "lang", "snel", "groot", "klein", 
-                "mooi", "goed", "beter", "slecht", "dik", "dun", "veel", "weinig", "hoog", "laag", 
-                "zwak", "soms", "altijd", "nooit", "vaak", "gedurende", "dag", "maand", "jaar", 
-                "ander", "zelfde", "zoveel", "jezelf", "zelf", "minder", "tevens", "andere", "bijvoorbeeld",
-                "bijna", "slechts", "enige", "diegene", "datgene", "zogenaamd", "precies", "gewoon", 
-                "rondom", "tenzij", "inmiddels", "eens", "gezamenlijk", "iets", "iemand", "ieder", "doordat",
-                "erg", "zwaar", "licht", "eigenlijk", "alleen", "toen", "terwijl", "sindsdien", "geruime tijd"
+                "is", "am", "the", "it", "a", "and", "of", "on", "in", "at", "there", "to", "for", "with", "without", "as", "to", "by", "to", "out", "his", "I", "you", "he", "she", "we", "they", "my", "your", "his", "her", "our", "your (formal)", "this", "that", "those", "all", "everything", "each", "everyone", "me", "me", "you", "your", "how", "where", "what", "who", "which", "why", "so that", "then", "but", "still", "just", "yet", "self", "between", "about", "under", "above", "to", "out", "as", "when", "now", "later", "here", "there", "somewhere", "also", "to", "just", "alone", "usually", "other", "me", "you", "she", "has", "have", "become", "can", "would", "must", "want", "all", "each", "on it", "to it", "while", "upon", "from which", "from whom", "as long as", "so that", "even", "indeed", "besides", "of course", "under", "during", "because of", "therefore", "then", "so", "still", "today", "so much", "more", "everything", "each", "the one", "without", "many", "this", "that", "except", "what", "without", "unless", "by", "at", "according to", "next to", "since", "now", "later", "long", "fast", "big", "small", "beautiful", "good", "better", "bad", "thick", "thin", "much", "few", "high", "low", "weak", "sometimes", "always", "never", "often", "during", "day", "month", "year", "another", "same", "so much", "yourself", "self", "less", "also", "other", "for example", "almost", "only", "one", "the one", "that thing", "so-called", "exactly", "just", "around", "unless", "in the meantime", "once", "jointly", "something", "someone", "each", "because of", "very", "heavy", "light", "actually", "only", "when", "while", "since then", "for some time"
             ];
             
             function cleanQuery(query) {
