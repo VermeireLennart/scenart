@@ -15,7 +15,14 @@ body {
     background-attachment: fixed; /* Zorgt ervoor dat de achtergrond vast blijft staan bij scrollen */
     /* Semi-transparantie voor alleen de achtergrondafbeelding */
     position: relative;
-    opacity: 0.9;
+    opacity: 0.8;
+}
+
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
 }
 
 body::before {
@@ -53,7 +60,7 @@ body::before {
 /* Header */
 header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Dit zorgt ervoor dat de inhoud van de header centraal wordt uitgelijnd */
     align-items: center;
     padding: 20px 40px;
     background: linear-gradient(135deg, white, white);
@@ -61,6 +68,13 @@ header {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     background-position-x: center;
     background-size: cover;
+}
+
+header .logo {
+    display: flex;
+    justify-content: center; /* Zorgt ervoor dat het logo gecentreerd is binnen de header */
+    flex-grow: 1; /* Laat het logo ruimte innemen */
+    text-align: center;
 }
 
 header .logo h1 {
@@ -99,7 +113,6 @@ header h1 a {
 }
 
 .header-afbeelding {
-    margin: 0 20px; /* Ruimte aan de zijkanten van de afbeelding */
     max-height: 150px; /* Pas de hoogte van de afbeelding aan naar wens */
     object-fit: contain; /* Zorgt ervoor dat de afbeelding niet vervormt */
     flex-grow: 1; /* Zorgt ervoor dat de afbeelding de beschikbare ruimte opvult */
@@ -181,8 +194,9 @@ button {
     width: 100%;
     padding: 10px;
     margin-top: 15px;
-    background-color: #28a745;
-    color: white;
+    background-color: rgb(249, 186, 20);;
+    color: black;
+    font-weight: bold;
     border: none;
     cursor: pointer;
     border-radius: 5px;
@@ -204,12 +218,12 @@ button {
 }
 
 .radio-container button:focus {
-    background-color: rgba(255, 255, 0, 0.751);
+    background-color: rgb(249, 186, 20, 0.751);
     color: black;
 }
 
 button:hover {
-    background-color: #218838;
+    background-color: rgb(249, 186, 20);;
 }
 
 /* Footer */
@@ -237,7 +251,7 @@ footer p {
 }
 
 footer a {
-    color: #ffdf00;
+    color: rgb(249, 186, 20);;
     text-decoration: none;
     transition: color 0.3s;
 }
@@ -510,8 +524,8 @@ output {
 }
 
 .main-button:hover {
-    background-color: rgb(92, 196, 92);
-    color: yellow;
+    background-color: rgb(249, 186, 20);;
+    color: black;
     border-radius: 20px;
     padding: 10px;
     width: 200px;
@@ -590,19 +604,36 @@ output {
     align-items: center;
     width: 100%;
     padding: 20px;
-    
 }
-.back-button {
-    display: flex;
+
+.back-button-displayed {
+    display: none;
     align-items: center;
-    background-color: #007bff;
-    color: white;
+    background-color: rgb(249, 186, 20);
+    color: black;
+    font-weight: bold;
     padding: 10px 15px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
     text-decoration: none;
     width: auto;
+    font-size: 1em;
+}
+
+.back-button {
+    display: flex;
+    align-items: center;
+    background-color: rgb(249, 186, 20);
+    color: black;
+    font-weight: bold;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-decoration: none;
+    width: auto;
+    font-size: 1em;
 }
 .back-button:hover {
     background-color: #0056b3;
@@ -634,7 +665,7 @@ output {
     display: block;
 }
 .menu-button {
-    background-color: #28a745;
+    background-color: rgb(249, 186, 20);;
     color: white;
     padding: 10px 15px;
     border: none;
@@ -642,7 +673,62 @@ output {
     border-radius: 5px;
 }
 .menu-button:hover {
-    background-color: #218838;
+    background-color: rgb(249, 186, 20);;
+}
+
+.intro {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 30px;
+    max-width: 800px;
+    margin: 50px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+.intro h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.intro p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.search-options {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.search-options li {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.search-options li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.search-options li strong {
+    color: #007bff;
+    font-weight: bold;
+}
+
+.intro ul, .intro p {
+    margin-left: 20px;
+    font-size: 16px;
 }
 
 @media only screen and (max-width: 700px) {

@@ -1,5 +1,16 @@
 window.onload = function() {
     window.selectedSearchType = "";
+    updateBackButtonVisibility(); // Check if a series is selected when the page loads
+    const backButton = document.querySelector('.menu');
+    if (backButton) {
+        backButton.addEventListener('click', function(event) {
+            // Remove selected series from localStorage
+            localStorage.removeItem("selectedSeries");
+
+            // Optionally, you could redirect to index.html or perform any other action
+            window.location.href = "index.html"; // Redirect to home page
+        });
+    }
 };
 
 function loadSeries(serie) {
@@ -14,8 +25,21 @@ function loadSeries(serie) {
 
             // Update de serie-inhoud op basis van de gekozen serie
             updateSerieContent(serie);
+            updateBackButtonVisibility(); // Hide or show back button based on selection
         })
         .catch(error => console.error("Fout bij laden van pagina:", error));
+}
+
+// Function to update the visibility of the back button
+function updateBackButtonVisibility() {
+    const backButton = document.querySelector('.menu');
+    const selectedSeries = localStorage.getItem("selectedSeries");
+    
+    if (selectedSeries) {
+        backButton.style.display = 'block'; // Show back button if a series is selected
+    } else {
+        backButton.style.display = 'none'; // Hide back button if no series is selected
+    }
 }
 
 // Functie om de juiste input (trefwoord of meerdere trefwoorden) weer te geven
@@ -35,11 +59,10 @@ function toggleTrefwoordInput(type) {
     }
 }
 
-
 // Functie om extra informatie weer te geven (personages, seizoen/aflevering)
 function toggleExtraInfo() {
     const extraInfo = document.getElementById("extra-info");
-    const arrow = document.g<etElementById("arrow");
+    const arrow = document.getElementById("arrow");
 
     if (extraInfo.style.display === "none") {
         extraInfo.style.display = "block";
@@ -100,4 +123,3 @@ function updateSerieContent(serie) {
         document.getElementById("serie-titel").src = "images/scnart_logo_wit.png";
     }
 }
-

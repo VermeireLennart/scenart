@@ -17,17 +17,15 @@
 <body>
 
     <header>   
-        <a href="index.html">
-            <img src="images/scenart_logo_met_naam_transparant.png" alt="Afbeelding" class="header-afbeelding">
-        </a>
+        <img src="images/scenart_logo_met_naam_transparant.png" alt="Afbeelding" class="header-afbeelding">
     </header>
 
     <main>
         <div class="menu">
-            <a href="index.html" class="back-button">&#8592; Home</a>
-            <img id="serie-logo" alt="Serie logo" class="header-afbeelding" src="images/scenart_logo_transparant.png">
+            <a href="index.html" class="back-button-displayed">&#8592; Home</a>
+            <img id="serie-logo" alt="Serie logo" class="header-afbeelding" src="images/transparant.png">
             <div class="dropdown">
-                <button class="menu-button">Serie &#9662;</button>
+                <button class="back-button">Serie &#9662;</button>
                 <div class="dropdown-content">
                     <a href="javascript:void(0);" onclick="loadSeries('fcdk')">FC De Kampioenen</a>
                     <a href="javascript:void(0);" onclick="loadSeries('theoffice')">The Office</a>
@@ -40,15 +38,26 @@
             <!-- Google Ads komt hier -->
         </section>
 
-        <section class="content" id="start-screen">
-            <h2>Zoek jouw favoriete scènes</h2>
-            <div>Kies een serie:</div>
-            <div class="button-list">
-                <button class="main-button" onclick="loadSeries('fcdk')">FC De Kampioenen</button>
-                <button class="main-button" onclick="loadSeries('theoffice')">The Office</button>
-                <button class="inactive-button">More Coming Soon...</button>
-            </div>
+        <section class="intro" id="start-screen">
+            <h2>Zoek Scènes en Afleveringen van je Favoriete Series</h2>
+            <p>Op deze website kun je snel scènes of afleveringen van verschillende TV-series vinden. Je hebt drie zoekopties:</p>
+            <ul class="search-options">
+                <li><strong>Zoeken op één trefwoord</strong>: Voer een enkel zoekwoord in en ontdek de scène of aflevering die overeenkomt met jouw zoekopdracht.</li>
+                <li><strong>Zoeken op meerdere trefwoorden</strong>: Vul meerdere zoekwoorden in om gerichtere resultaten te krijgen, zodat je precies kunt vinden wat je zoekt.</li>
+                <li><strong>Zoeken met een beschrijving</strong>: Maak gebruik van AI om een beschrijving in te voeren van het moment waar je naar op zoek bent. Onze geavanceerde technologie helpt je om de juiste scène of aflevering te vinden, zelfs als je niet precies weet welk trefwoord je moet gebruiken.</li>
+            </ul>
+            <p>Of je nu een specifieke scène in gedachten hebt of gewoon nieuwsgierig bent naar een moment uit je favoriete serie, met deze zoekmogelijkheden vind je eenvoudig wat je zoekt.</p>
+
+            <section class="content">
+                <p>Kies een serie:</p>
+                <div class="button-list">
+                    <button class="main-button" onclick="loadSeries('fcdk')">FC De Kampioenen</button>
+                    <button class="main-button" onclick="loadSeries('theoffice')">The Office</button>
+                    <!-- <button class="inactive-button">More Coming Soon...</button> -->
+                </div>
+            </section>
         </section>
+
 
         <section class="content" id="dynamic-content" style="display: none;">
             <!-- Hier wordt de serie-inhoud ingeladen -->
