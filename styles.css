@@ -19,9 +19,6 @@ body {
 }
 
 html, body {
-    width: 100%;
-    margin: 0;
-    padding: 0;
     overflow-x: hidden;
 }
 
@@ -32,7 +29,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.5); /* Pas de kleur en transparantie aan */
+    background: rgba(255, 255, 255, 0.6); /* Pas de kleur en transparantie aan */
     z-index: -1; /* Zorgt ervoor dat de laag achter de content blijft */
 }
 
@@ -110,13 +107,6 @@ header h1 a {
 
 .fcdk-titelbalk .dropdown {
     margin-left: auto; /* Zorgt ervoor dat de dropdown naar de rechterkant verschuift */
-}
-
-.header-afbeelding {
-    max-height: 150px; /* Pas de hoogte van de afbeelding aan naar wens */
-    object-fit: contain; /* Zorgt ervoor dat de afbeelding niet vervormt */
-    flex-grow: 1; /* Zorgt ervoor dat de afbeelding de beschikbare ruimte opvult */
-    text-align: center;
 }
 
 .serie-logo {
@@ -600,29 +590,29 @@ output {
 
 .menu {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column; /* Dit is standaard, maar expliciet toegevoegd */
+    justify-content: space-between; /* Verdeel ze netjes */
+    align-items: center; /* Zorgt dat alles op dezelfde hoogte staat */
     width: 100%;
-    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px;
+}
+.menu > div {
+    display: flex;
+    align-items: center;
+}
+.header-afbeelding {
+    max-height: 100px; /* Pas de hoogte van de afbeelding aan naar wens */
+    margin: 0 auto; /* Centreert de afbeelding */
+    display: block;
 }
 
-.back-button-displayed {
-    display: none;
-    align-items: center;
-    background-color: rgb(249, 186, 20);
-    color: black;
-    font-weight: bold;
-    padding: 10px 15px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    text-decoration: none;
-    width: auto;
-    font-size: 1em;
+p, li {
+    text-align: justify;
 }
 
 .back-button {
-    display: flex;
     align-items: center;
     background-color: rgb(249, 186, 20);
     color: black;
@@ -634,13 +624,15 @@ output {
     text-decoration: none;
     width: auto;
     font-size: 1em;
+    margin-top: 10px;
 }
+
 .back-button:hover {
-    background-color: #0056b3;
+    background-color: rgb(199, 143, 1);
 }
 .dropdown {
     position: relative;
-    display: inline-block;
+    align-items: center;
     margin-right: 30px;
 }
 .dropdown-content {
@@ -735,7 +727,7 @@ output {
 
     .header-afbeelding {
         margin: 0 10px; /* Ruimte aan de zijkanten van de afbeelding */
-        max-height: 70px; /* Pas de hoogte van de afbeelding aan naar wens */
+        max-height: 50px; /* Pas de hoogte van de afbeelding aan naar wens */
         object-fit: contain; /* Zorgt ervoor dat de afbeelding niet vervormt */
         flex-grow: 1; /* Zorgt ervoor dat de afbeelding de beschikbare ruimte opvult */
         text-align: center;
@@ -792,6 +784,11 @@ output {
 
     .break-line {
         display: inline; /* Staat de tekst toe om automatisch af te breken */
+    }
+
+    p, li {
+        text-align: justify;
+        font-size: 0.8em;
     }
 
     /* Eventuele andere aanpassingen voor kleinere schermen */

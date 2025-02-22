@@ -10,6 +10,33 @@
 </head>
 <body onload="initializePage()">
     <main>
+        <!-- <div class="menu">
+            <a href="index.html" class="back-button">&#8592; Home</a>
+            <img id="serie-logo" alt="Serie logo" class="header-afbeelding" src="images/transparant.png">
+            <div class="dropdown">
+                <button class="back-button">Serie &#9662;</button>
+                <div class="dropdown-content">
+                    <a href="javascript:void(0);" onclick="loadSeries('fcdk')">FC De Kampioenen</a>
+                    <a href="javascript:void(0);" onclick="loadSeries('theoffice')">The Office</a>
+                </div>
+            </div>
+        </div>  -->
+        <div class="menu">
+            <div class="center">
+            <div class="left">
+                <a href="index.html" class="back-button">&#8592; Home</a>
+            </div>
+                <img id="serie-logo" alt="Serie logo" class="header-afbeelding" src="images/transparant.png">
+            <div class="dropdown">
+                <button class="back-button">Serie &#9662;</button>
+                <div class="dropdown-content">
+                    <a href="javascript:void(0);" onclick="loadSeries('fcdk')">FC De Kampioenen</a>
+                    <a href="javascript:void(0);" onclick="loadSeries('theoffice')">The Office</a>
+                </div>
+            </div>
+        </div>
+
+        </div>
         <section class="search-container">
             <h2>Zoek een aflevering of scène uit <span class="break-line"><br></span><span id="serie-titel"></span></h2>
             <div>Opties:</div>
@@ -72,9 +99,9 @@
                 </div>
             </div>
 
-            <section class="adsense ad-top">
-                <!-- Google Ads komt hier -->
-            </section>
+            <!-- <section class="adsense ad-top">
+                 Google Ads komt hier
+            </section> -->
 
             <button id="search-button" onclick="submitSearch()">Zoeken</button>
         </section>

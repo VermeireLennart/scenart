@@ -1,16 +1,16 @@
 window.onload = function() {
     window.selectedSearchType = "";
-    updateBackButtonVisibility(); // Check if a series is selected when the page loads
-    const backButton = document.querySelector('.menu');
-    if (backButton) {
-        backButton.addEventListener('click', function(event) {
-            // Remove selected series from localStorage
-            localStorage.removeItem("selectedSeries");
+    // updateBackButtonVisibility(); // Check if a series is selected when the page loads
+    // const backButton = document.querySelector('.menu');
+    // if (backButton) {
+    //     backButton.addEventListener('click', function(event) {
+    //         // Remove selected series from localStorage
+    //         localStorage.removeItem("selectedSeries");
 
-            // Optionally, you could redirect to index.html or perform any other action
-            window.location.href = "index.html"; // Redirect to home page
-        });
-    }
+    //         // Optionally, you could redirect to index.html or perform any other action
+    //         window.location.href = "index.html"; // Redirect to home page
+    //     });
+    // }
 };
 
 function loadSeries(serie) {
