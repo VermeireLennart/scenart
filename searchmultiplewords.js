@@ -106,14 +106,25 @@ function searchMultipleWords(serie) {
                 return { normalizedScore, matchedWordsCount, matchedWords };
             }
 
-            function formatMinute(seconds) {
-                if (isNaN(seconds)) {
-                    console.warn("Ongeldige starttijd:", seconds);
-                    return "";
+            // Functie om tijd van "00:00:07,560" naar seconden om te rekenen
+            function convertTimeToSeconds(time) {
+                const [hours, minutes, seconds] = time.split(":");
+                const [sec, ms] = seconds.split(",");
+                return parseInt(hours) * 3600 + parseInt(minutes) * 60 + parseInt(sec) + parseInt(ms) / 1000;
+            }
+
+            // Update de functie formatMinute om met de omgezette tijd om te gaan
+            function formatMinute(time) {
+                if (!time) {
+                    console.warn("Ongeldige starttijd:", time);
+                    return "";  // Return lege string als geen tijd is gegeven
                 }
-            
+
+                const seconds = convertTimeToSeconds(time); // Zet de tijd om naar seconden
                 const minutes = Math.floor(seconds / 60);
-                return `Vanaf min. ${minutes}:`;
+                const remainingSeconds = Math.floor(seconds % 60);
+                
+                return `Vanaf min. ${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}:`; // Toont als "minuten:seconden"
             }
 
             // Sorteer afleveringen op score en log de resultaten
@@ -150,9 +161,10 @@ function searchMultipleWords(serie) {
             if (confidence > 100) {
                 confidence = 100;
             }
+            // Voorbeeld van hoe de aangepaste functie wordt gebruikt in de UI-rendering
             resultItemHighest.innerHTML = 
                 `<div class="highest-container">
-                <span class="toggle-text" style="cursor: pointer; font-weight: bold; padding: 5px;">▼</span>
+                    <span class="toggle-text" style="cursor: pointer; font-weight: bold; padding: 5px;">▼</span>
                     <a href="${highestScoreEpisode.episode.url}" target="_blank" class="play-button">
                         <span class="icon">📺 </span> &nbsp; &nbsp; 
                         <strong>${highestScoreEpisode.episode.titel}</strong>
@@ -163,11 +175,11 @@ function searchMultipleWords(serie) {
                 </div>
                 <ul class="match-sentences">
                     ${highestScoreEpisode.matchSentences.map(sentence => 
-                            `<li>
-                                <span class="timestamp">${formatMinute(sentence.startTime)}</span> 
-                                ${sentence.text}
-                            </li>`).join('')}
-                    </ul>
+                        `<li>
+                            <span class="timestamp">${formatMinute(sentence.start)}</span> 
+                            ${sentence.text}
+                        </li>`).join('')}
+                </ul>
             `;
             topResult.appendChild(resultItemHighest);
 

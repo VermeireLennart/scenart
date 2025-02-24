@@ -13,6 +13,15 @@ window.onload = function() {
     // }
 };
 
+const seriesData = {
+    "fcdk": { title: "FC De Kampioenen", logo: "images/fcdk_logo.png" },
+    "theoffice": { title: "The Office", logo: "images/the_office_logo.png" },
+    "friends": { title: "Friends", logo: "images/friends_logo.png" },
+    "heteiland": { title: "Het Eiland", logo: "images/heteiland_logo.png" },
+    "nonkels": { title: "Nonkels", logo: "images/nonkels_logo.png" },
+    "w817": { title: "W817", logo: "images/w817_logo.png" }
+};
+
 function loadSeries(serie) {
     localStorage.setItem("selectedSeries", serie);
     fetch(`serie.html?serie=${serie}`)  // Laad de generieke seriepagina
@@ -111,15 +120,8 @@ function submitSearch() {
 }
 
 function updateSerieContent(serie) {
-    if (serie === "fcdk") {
-        document.getElementById("serie-titel").textContent = "FC De Kampioenen";
-        document.getElementById("serie-logo").src = "images/fcdk_logo.png"; 
-    }
-    else if (serie === "theoffice") {
-        document.getElementById("serie-titel").textContent = "The Office";
-        document.getElementById("serie-logo").src = "images/the_office_logo.png";
-    }
-    else {
-        document.getElementById("serie-titel").src = "images/scnart_logo_wit.png";
-    }
+    const serieData = seriesData[serie] || { title: "", logo: "images/scnart_logo_wit.png" };
+    
+    document.getElementById("serie-titel").textContent = serieData.title;
+    document.getElementById("serie-logo").src = serieData.logo;
 }
